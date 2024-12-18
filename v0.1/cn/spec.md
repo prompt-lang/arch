@@ -50,8 +50,10 @@ Mapping List用于ppl与ippl的转换
 规则：ppl中\<content\>\<\/content\>中的所有单词或者标签需要在Mapping List中进行定义  
 
 ## 3 Pipelined Prompts  
+![2PPL](https://github.com/prompt-lang/arch/blob/master/assets/2ppl.jpg#pic_center)  
 
 ### 3.1 2ppl和2ippl protocol  
+
  
 ### 3.2 2ppl的顺序规则  
 
@@ -62,7 +64,16 @@ Mapping List用于ppl与ippl的转换
 在2PPL管线排布的PPL可以对于输入prompt设置条件。
 
 ## 5 External Toolbox  
+
 ### 5.1 Sandbox  
 
-对于模型计算使用AGI与外部计算器的效率值IOE-1<1 [IOE参考](./thoughtbench.md), Sandbox中实现了系列的可以执行代码或执行代码工程环境。 
+对于模型计算使用AGI与外部计算器的效率值[IOE-1](./thoughtbench.md)<1 [IOE参考], Sandbox中实现了系列的可以执行代码或执行代码工程环境。 
+
+## 6 Synthetic Prompts
+
+Synthetic Prompt可以针对UMI的任意合成数据，Synthetic PPL中可以混合多种输入
+
+- Agent在多次环境交互中的测试性的输出提供给Prompt,或者输出一定规则对prompt进行修改  
+
+
 
