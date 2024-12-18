@@ -5,9 +5,13 @@
 
 #### IOE: inside-outside-efficiency
 
-TODO: 
-[ ] 定义不同的IOE的samples的复杂度组成   
+TODO:   
+
+[ ] 定义不同的IOE的samples的复杂度组成 
+
 [ ] thoughtqa-ioe-1/samples  
+
+
 
 QA:  
 可以通过ThoughtQA定义一系列测试样例,例如一段python执行代码  
