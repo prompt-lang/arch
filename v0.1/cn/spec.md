@@ -64,4 +64,4 @@ Mapping List用于ppl与ippl的转换
 5 External Toolbox  
 5.1 Sandbox  
 
-对于模型计算使用AGI与外部计算器的效率值IOE-1<1 (IOE参考)[./thoughtbench.md],Sandbox中实现了系列的可以执行代码或执行代码工程环境。
+对于模型计算使用AGI与外部计算器的效率值IOE-1<1 [IOE参考](./thoughtbench.md), Sandbox中实现了系列的可以执行代码或执行代码工程环境。 
