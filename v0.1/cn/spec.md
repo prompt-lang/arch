@@ -54,6 +54,12 @@ Mapping List用于ppl与ippl的转换
 
 ### 3.1 2ppl和2ippl protocol  
 
+|chunk|Human|Agent|Multiple Sequeence|
+|---|---|---|---|
+|ppl|[x]|[ ]|[ ] |
+|ippl|[]|[x]|[ ]|
+|2ppl|[x]|[ ]|[x]|
+|2ippl|[ ]|[x]|[x]|
  
 ### 3.2 2ppl的顺序规则  
 
