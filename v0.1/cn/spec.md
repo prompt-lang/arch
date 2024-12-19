@@ -80,4 +80,10 @@ Mapping List用于ppl与ippl的转换
 
 Synthetic Prompt可以针对UMI的任意合成数据，Synthetic PPL中可以混合多种输入
 
-- Agent在多次环境交互中的测试性的输出提供给Prompt,或者输出一定规则对prompt进行修改  
+- Agent在多次环境交互中的测试性的输出提供给Prompt,或者输出一定规则对prompt进行修改   
+
+## 7 Shared Prompts(Memoried Prompts)
+
+
+
+
