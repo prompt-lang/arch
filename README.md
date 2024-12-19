@@ -15,13 +15,4 @@ Prompt Lang is used to handle the input of an Agent. The input of the Agent mode
 
 
 
-## Citation
-```
-@misc{
-    title = {Prompt Lang},
-    url = {https://github.com/prompt-lang}
-}
-```
-
-
 ## License MIT
