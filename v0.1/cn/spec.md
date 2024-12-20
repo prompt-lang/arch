@@ -20,6 +20,7 @@ prompt输入内容模版定义在开始标\<SOI\>和结束标签\<EOI\>
 \<SOI\>\<EOI\>之间的内容表示model的一次内容输入  
 
 ### Header用于指定  
+
 - 安全规则  
 - 加密规则  
 - 数据压缩协议  
@@ -84,6 +85,10 @@ Synthetic Prompt可以针对UMI的任意合成数据，Synthetic PPL中可以混
 
 ## 7 Shared Prompts(Memoried Prompts)
 
+2ppl中排布的多次prompt输入，可以使用到的共同的输入。例如对一段数据的多次输入处理。
 
 
+## 8 Prompt In Loop
+
+Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，agent可以通过prompt改变和关联一段时间的推理行为
 
