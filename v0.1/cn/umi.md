@@ -22,3 +22,8 @@
     1.2.1 使用external processor去记忆并触发这个prompt  
 
     1.2.2 使用step-by-step的方式处理，Agent的每一个处理步骤需要理解这个prompt是否需要被处理  
+
+
+Reference 
+
+[Prompt Chain](https://www.promptingguide.ai/zh/techniques/prompt_chaining)
