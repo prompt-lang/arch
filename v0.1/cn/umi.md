@@ -23,6 +23,18 @@
 
     1.2.2 使用step-by-step的方式处理，Agent的每一个处理步骤需要理解这个prompt是否需要被处理  
 
+1.3 multi-loop task
+
+    Agent通过多次输出执行完成task
+
+    1.1 Task是复杂的不能解决，经过多轮次来完成任务
+
+    1.2 Task是伴随的，例如游戏，在这一个周期内不断的产生动作输出来完成这个周期内的任务
+
+1.4 seek-for-prompt
+
+    Agent通过获取更多的Prompt来获取信息
+
 
 Reference 
 
