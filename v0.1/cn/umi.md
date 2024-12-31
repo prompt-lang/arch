@@ -26,4 +26,7 @@
 
 Reference 
 
-[Prompt Chain](https://www.promptingguide.ai/zh/techniques/prompt_chaining)
+[Prompt Chain](https://www.promptingguide.ai/zh/techniques/prompt_chaining)  
+
+[RAG](https://ai.meta.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/)  
+
