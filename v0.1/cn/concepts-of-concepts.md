@@ -10,5 +10,3 @@ Concept Theory for Prompt Lang
 
 词典对概念的描述为对人类的意识或认知的描述或概括。
 
-#### 
-
