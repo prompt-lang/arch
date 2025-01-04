@@ -13,7 +13,7 @@
     Delegate Agent主要的功能实现和Human人机交互，或者和外部进行交付，处理交互数据等，Task Agent更关注于任务相关的信息及策略执行  
 
 
-1.2 Self Loop  
+1.2 self-loop  
 
     Agent(time i) -> Agent(time i+n)  
 
@@ -41,4 +41,9 @@ Reference
 [Prompt Chain](https://www.promptingguide.ai/zh/techniques/prompt_chaining)  
 
 [RAG](https://ai.meta.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/)  
+
+[Anthropic MCP](https://www.anthropic.com/news/model-context-protocol)  
+
+[OpenAI Swarm](https://github.com/openai/swarm)  
+
 
