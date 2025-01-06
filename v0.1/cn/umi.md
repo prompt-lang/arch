@@ -35,6 +35,16 @@
 
     Agent通过获取更多的Prompt来获取信息
 
+1.5 Prompt Rank
+
+    收到多个prompt，在处理时prompt的可以设定排序，或者按照优先级计算
+
+1.6 Realtime Prompt
+
+
+    接入Prompt信号为实时的交互反馈
+
+
 
 Reference 
 
@@ -46,5 +56,7 @@ Reference
 
 [OpenAI Swarm](https://github.com/openai/swarm)   
 
-[APPL](https://github.com/appl-team/appl)  
+[APPL](https://github.com/appl-team/appl)    
 
+
+[PromptWizard](https://arxiv.org/abs/2405.18369)  
