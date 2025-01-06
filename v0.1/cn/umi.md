@@ -44,6 +44,7 @@ Reference
 
 [Anthropic MCP](https://www.anthropic.com/news/model-context-protocol)  
 
-[OpenAI Swarm](https://github.com/openai/swarm)  
+[OpenAI Swarm](https://github.com/openai/swarm)   
 
+[APPL](https://github.com/appl-team/appl)  
 
