@@ -106,3 +106,7 @@ Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，age
 ### 11 promptscript: Prompt-lang Script rules
 
 用于实现脚本化的script
+
+### 12 Planned Prompts
+
+规划了的Prompts
