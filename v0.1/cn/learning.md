@@ -8,6 +8,13 @@
 
 如同分类任务，在神经网络推理过程中会将具有相似特征的对象划分到一个类别，这是感知输入到感知概念的映射。
 
+### Fold
+
+
+### 学习脚本 
+
+Scripts for learning process
+
 
 
 Reference

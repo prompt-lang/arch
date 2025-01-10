@@ -3,6 +3,7 @@
 参考 [UMI交互模型](./umi.md)  
 
 ## 2 Prompt片段  
+
 ### 2.1 ppl和ippl protocol  
 
 ![PPL Chunk](https://github.com/prompt-lang/arch/blob/master/assets/ppl.jpg#pic_center)  
@@ -92,3 +93,16 @@ Synthetic Prompt可以针对UMI的任意合成数据，Synthetic PPL中可以混
 
 Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，agent可以通过prompt改变和关联一段时间的推理行为
 
+
+### 9 pptensor: Prompt-Lang Tensors
+
+存储加速prompt-Lang的相关Tensor
+
+### 10 ppdata: Prompt-lang unified data format
+
+用于加速存储生成的如Shared Prompts, Synthetic Prompts等数据
+
+
+### 11 promptscript: Prompt-lang Script rules
+
+用于实现脚本化的script

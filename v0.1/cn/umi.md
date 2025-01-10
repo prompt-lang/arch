@@ -44,6 +44,17 @@
 
     接入Prompt信号为实时的交互反馈
 
+1.7 Session
+
+
+
+1.8 Prompt Modeling
+
+
+1.9 Prompt Canvas
+
+    提示视图，与视图提示
+
 
 
 Reference 
@@ -57,6 +68,5 @@ Reference
 [OpenAI Swarm](https://github.com/openai/swarm)   
 
 [APPL](https://github.com/appl-team/appl)    
-
 
 [PromptWizard](https://arxiv.org/abs/2405.18369)  
