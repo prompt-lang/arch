@@ -103,7 +103,7 @@ Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，age
 用于加速存储生成的如Shared Prompts, Synthetic Prompts等数据
 
 
-### 11 promptscript: Prompt-lang Script rules
+### 11 prompt-script: Prompt-lang Script rules
 
 用于实现脚本化的script
 
