@@ -76,3 +76,5 @@ Reference
 [APPL](https://github.com/appl-team/appl)    
 
 [PromptWizard](https://arxiv.org/abs/2405.18369)  
+
+[DSPy](https://github.com/stanfordnlp/dspy)
