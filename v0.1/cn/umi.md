@@ -63,6 +63,19 @@
    2.2 在非文本输入，如进行动作控制领域的输入，语音生成等的非文本输出的建模为输出建模
 
 
+## Appendix
+
+3.1 Reference Description Formats for simulation
+
+[MuJoCo Modeling](https://mujoco.readthedocs.io/en/latest/modeling.html)  
+
+[USD](https://developer.nvidia.com/usd)  
+
+[URDF](http://wiki.ros.org/urdf)  
+
+
+
+
 Reference 
 
 [Prompt Chain](https://www.promptingguide.ai/zh/techniques/prompt_chaining)  
@@ -78,3 +91,5 @@ Reference
 [PromptWizard](https://arxiv.org/abs/2405.18369)  
 
 [DSPy](https://github.com/stanfordnlp/dspy)
+
+
