@@ -27,4 +27,6 @@ Reference
 
 [prompt engineering](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)   
 
-[AutoPDL](https://arxiv.org/abs/2504.04365)  
+[AutoPDL](https://arxiv.org/abs/2504.04365)    
+
+[pMoE](https://openreview.net/forum?id=Z0eiiV3Yyh)  
