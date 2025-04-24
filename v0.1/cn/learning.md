@@ -15,7 +15,7 @@
 
 Scripts for learning process
 
-### PPLP: Prompt-Lang Learing Pipeline
+### PPLP: Prompt-Lang Learning Pipeline
 
 基于Prompt-lang的Learning系统
 
