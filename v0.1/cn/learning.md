@@ -15,7 +15,7 @@
 
 Scripts for learning process
 
-### PPLP: Prompt-Lang Learning Pipeline
+### PPTS: Prompt-Lang Training System
 
 基于Prompt-lang的Learning系统
 
