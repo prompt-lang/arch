@@ -7,7 +7,7 @@
 AGI模型将部分不需要Thought的任务下发到PNode去执行，PNode按照AGI输出的Prompt Program执行任务。  
 
 
-1.2 PNode Protocal  
+1.2 PNode Protocol  
 
 针对于AGI模型控制PNode执行状态的协议，例如中断处理，模板任务更新等。  
 
