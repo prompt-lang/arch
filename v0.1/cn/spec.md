@@ -98,6 +98,7 @@ Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，age
 
 存储加速prompt-Lang的相关Tensor
 
+
 ### 10 ppdata: Prompt-lang unified data format
 
 用于加速存储生成的如Shared Prompts, Synthetic Prompts等数据
@@ -110,3 +111,9 @@ Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，age
 ### 12 Planned Prompts
 
 规划了的Prompts
+
+
+### 13 Intrinsic Prompts
+
+内在的模型输入，如Agent本体的一些状态信息输入等
+
