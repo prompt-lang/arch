@@ -1,6 +1,6 @@
 ### Robot Using Agent
 
-机器人AI调用，通过计入Prompt-lang RUA框架实现智能体大模型对机器人的调用
+机器人AI调用，通过计入Prompt-lang RUA框架实现智能体大模型对机器人的调用。
 满足使用大模型实现Agent式调用及自动任务解决的机器人为RUA机器人。
 
 #### RUA Protocal
