@@ -13,6 +13,11 @@ Agent system，使用Prompt in loop方式训练进行的模型合成及快速训
 以及规划使用pnode可提供局部执行任务节点。
 
 
+#### Mas远程通信协议RCP
+
+Remote Communication Protocal
+
+
 reference:
 
 [Language Game](https://arxiv.org/pdf/2411.16905)  
