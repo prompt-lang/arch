@@ -14,6 +14,6 @@ Prompt Lang is used to handle the input of an Agent. The input of the Agent mode
 ## Architechtures
 
 
-###### Copyright (c) Machine-Society.ai, All rights reserved.
+###### Copyright (c) [Machine-Society.ai](https://x.com/machine_society), All rights reserved.
 
 ## License under the MIT license
