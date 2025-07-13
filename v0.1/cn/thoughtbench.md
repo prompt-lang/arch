@@ -32,3 +32,7 @@ AGI模型正确执行一个运算任务的时间为$T1(i)=agi_computer_exec(QA_i
 外部计算无智能计算器的正确执行相同任务的时间为$T2(i)=external_computer_exec(QA_i)$,如果执行失败$T2(i)=false$    
 $$ioe_1=\mathbb{E}_{i=1}^{n}[\frac{T1(i)}{T2(i)}, i if  T1(i) and T2(i) ]$$   
 
+
+## Intelligence Level Items
+
+ICS: Intelligent's Capacity and tiered Scope
