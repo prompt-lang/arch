@@ -13,3 +13,5 @@
 
 实现超越局域规划的智能体，智能体可以规划范围为智能体的规划等级ThoughtBench/ICS: Intelligent's Capacity and tiered Scope
 
+
+### 多个智能体组成的联合超级智能规划系统为 MA-SuerIntelligent Planner
