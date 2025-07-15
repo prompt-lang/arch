@@ -13,3 +13,9 @@
 2.1 客观的安全准则  
 
 2.2 安全风险  
+
+
+#### 3. Safe Prompts
+
+Prompt injection
+
