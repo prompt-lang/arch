@@ -44,3 +44,12 @@ $$ioe_1=\mathbb{E}_{i=1}^{n}[\frac{T1(i)}{T2(i)}, i if  T1(i) and T2(i) ]$$
 ## Intelligence Level Items
 
 ICS: Intelligent's Capacity and tiered Scope
+
+
+Ref:
+
+
+Ref:
+
+[PPLC](github.com/prompt-lang/storythought/bench)
+

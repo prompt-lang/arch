@@ -8,4 +8,8 @@ Prompt-lang Runtime PPLC
 #### Training Toolsets
 
 
-#### 
+
+
+Ref:
+
+[PPLC](github.com/prompt-lang/storythought/pplc)

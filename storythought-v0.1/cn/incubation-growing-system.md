@@ -10,6 +10,11 @@ Scripts for learning process
 基于Prompt-lang的Learning系统
 
 
+### Prompt-lang Learning Session
+
+使用Prompt-lang创建的学习训练单元
+
+
 
 Reference
 

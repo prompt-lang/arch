@@ -13,6 +13,9 @@ Prompt Lang is used to handle the input of an Agent. The input of the Agent mode
 
 ## Architechtures
 
+Arch storythought-v0.1 will be available on github [storythought](github.com/prompt-lang/storythought)
+
+
 
 ###### Copyright (c) [Machine-Society.ai](https://x.com/machine_society), All rights reserved.
 

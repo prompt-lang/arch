@@ -46,6 +46,7 @@
 
 1.7 Session
 
+    see: ./session-context.md
 
 
 1.8 Prompt Modeling
@@ -62,10 +63,20 @@
 
    2.2 在非文本输入，如进行动作控制领域的输入，语音生成等的非文本输出的建模为输出建模
 
+
+
 #### UMC: Unified Machine Connector  
 
-   2.3 [UMC](github.com/prompt-lang/umc) 是智能体间的UMI通信协议的实现，或者智能体与神经计算节点之前的交互中间系统
-    
+   2.3 [UMC](github.com/prompt-lang/storythought/umc) 是智能体间的UMI通信协议的实现，或者智能体与神经计算节点之前的交互中间系统
+
+#### Context Modeling
+
+    2.4 see: [Context Modeling](./session-context.md) 
+
+
+## Prompt-lang/UMI
+
+使用Prompt-lang定义实现UMI
 
 
 ## Appendix
@@ -77,7 +88,6 @@
 [USD](https://developer.nvidia.com/usd)  
 
 [URDF](http://wiki.ros.org/urdf)  
-
 
 
 
