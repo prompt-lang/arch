@@ -4,5 +4,17 @@
 
 ## 大脑系统的等级
 
-2.1 SuperIntelligent System超级智能体大脑  
+2.1 see: [hierarchical](./hierarchical.md)
+
+
+## 基础系统构成
+
+### 大脑内部系统
+
+### 外部作用系统
+
+### 信息传输连接
+
+### 外部信息获取系统 
+
 
