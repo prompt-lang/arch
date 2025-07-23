@@ -1,7 +1,5 @@
 ### Thoughtbench for Prompt-Lang
 
-
-
 ## Efficiency Items
 
 #### IOE: inside-outside-efficiency
@@ -13,9 +11,7 @@ TODO:
 [ ] thoughtqa-ioe-1/samples  
 
 
-
 QA:   
-
 
 可以通过ThoughtQA定义一系列测试样例,例如一段python执行代码  
 

@@ -9,14 +9,21 @@ Scripts for learning process
 
 基于Prompt-lang的Learning系统
 
+#### 快速训练任务 Fast Training Task
+
 
 ### Prompt-lang Learning Session
 
 使用Prompt-lang创建的学习训练单元
 
+#### Prompt-lang学习单元的构成与示例
+
+#### Prompt-lang学习单元构成的流程与程序
 
 
 Reference
+
+[deep learning](https://www.deeplearningbook.org/contents/ml.html)
 
 [A Systematic Survey of Prompting Methods](https://arxiv.org/abs/2107.13586)   
 

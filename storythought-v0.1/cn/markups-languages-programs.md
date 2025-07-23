@@ -15,5 +15,5 @@
 
 ref: 
 
-https://www.deeplearningbook.org/contents/ml.html
+[deep learning](https://www.deeplearningbook.org/contents/ml.html)
 
