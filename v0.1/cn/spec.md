@@ -117,3 +117,6 @@ Agent与Prompt的交互，多次推理过程总，prompt存在前后关系，age
 
 内在的模型输入，如Agent本体的一些状态信息输入等
 
+## Prompt-lang Model Context(PMC)
+
+对于纯粹的模型交互的数据持久化协议输出为.pmc，通过pmc模型可以进行直接交互，或者执行外部存储或者加载。
