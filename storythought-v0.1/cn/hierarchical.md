@@ -21,5 +21,5 @@
 
 ### Fast-Memory
 
-### Slow-Memory
+### Long-time-Memory
 
