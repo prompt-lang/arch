@@ -6,7 +6,7 @@
 
 ### I and R
 
-I(Virtual)表示虚的，计算中间态
+I(Virtual)表示虚的，计算中间态  
 R(Real)可用于交互的真实指代
 
 ### 2.1 ppl和ippl protocol  
