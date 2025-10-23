@@ -4,7 +4,13 @@
 
 ## 2 Prompt片段  
 
+### I and R
+
+I(Virtual)表示虚的，计算中间态
+R(Real)可用于交互的真实指代
+
 ### 2.1 ppl和ippl protocol  
+
 
 ![PPL Chunk](https://github.com/prompt-lang/arch/blob/master/assets/ppl.jpg#pic_center)  
 
