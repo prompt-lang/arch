@@ -3,7 +3,7 @@
 
 ### 学习脚本 
 
-Scripts for learning process
+Agent-System for learning process
 
 ### Agentic Learner: Prompt-Lang Training System
 
