@@ -5,7 +5,7 @@
 
 Scripts for learning process
 
-### PPTS: Prompt-Lang Training System
+### Agentic Learner: Prompt-Lang Training System
 
 基于Prompt-lang的Learning系统
 
@@ -32,3 +32,7 @@ Reference
 [AutoPDL](https://arxiv.org/abs/2504.04365)    
 
 [pMoE](https://openreview.net/forum?id=Z0eiiV3Yyh)  
+
+[AgentRL](https://arxiv.org/abs/2510.04206)
+
+
