@@ -1,7 +1,5 @@
 ## 智能体分层
 
-
-
 面向不同计算平台所能胜任的计算工作，实现能力的分层。
 
 
@@ -22,4 +20,11 @@
 ### Fast-Memory
 
 ### Long-time-Memory
+
+
+## Meta-Mode元模式
+
+### 抽象层级
+
+### 信息简化 Simplified and reduction
 
