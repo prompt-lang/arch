@@ -25,3 +25,6 @@
 
 用于高效增强模型索引记忆的数据视图模式为MemPML
 
+Ref:
+
+[Remem](https://arxiv.org/pdf/2511.20857)
