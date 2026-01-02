@@ -1,4 +1,4 @@
-![prompt-lang](https://github.com/prompt-lang/arch/blob/master/assets/prompt-lang.jpg#pic_center)
+![prompt-lang](https://github.com/prompt-lang/arch/blob/master/assets/prompt-lang.png#pic_centerh
 
 # Prompt Lang 
 [中文](https://github.com/prompt-lang/arch/blob/master/README_CN.md)
