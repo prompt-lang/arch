@@ -23,7 +23,7 @@
 
     1.2.2 使用step-by-step的方式处理，Agent的每一个处理步骤需要理解这个prompt是否需要被处理  
 
-1.3 multi-loop task
+1.3 multi-turn task
 
     Agent通过多次输出执行完成task
 
