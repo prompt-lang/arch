@@ -18,5 +18,5 @@ Multi-Step Contextual Interaction，MSCI含有上下文的多步交互，针对�
 
 ### StepFreq
 
-在MSCI过程中，智能体与环境的Step频率，智能体可以进行调整。Step频率的Reward考虑Step频率以及问题解决效率。
+在MSCI过程中，智能体与环境的Step频率，智能体可以进行调整。Step频率的Reward考虑Step频率能耗等以及问题解决效率。
 
