@@ -21,10 +21,13 @@
 
 ### Long-time-Memory
 
-
 ## Meta-Mode元模式
 
 ### 抽象层级
 
 ### 信息简化 Simplified and reduction
+
+## Concept modeling
+
+概念建模
 
