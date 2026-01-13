@@ -1,4 +1,4 @@
-## Agentic Learner
+## Agentic Learning
 
 
 ### 学习脚本 
