@@ -1,4 +1,6 @@
-## AI计算机Xomputr
+# Prompt-Lang Xomputr
+
+### AI计算机Xomputr
 
 AI运算的基础设施，面向AI并为其运行并获得强大执行能力的计算软硬件设施。
 
