@@ -17,6 +17,6 @@ Arch storythought-v0.1 will be available on github [storythought](github.com/pro
 
 
 
-###### Copyright (c) [Machine-Society.ai](https://x.com/machine_society), All rights reserved.
+###### Copyright (c) [MachineSociety.com](https://machinesociety.com), All rights reserved.
 
 ## License under the MIT license
