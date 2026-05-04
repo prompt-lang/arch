@@ -3,7 +3,7 @@
 # Prompt Lang 
 [中文](https://github.com/prompt-lang/arch/blob/master/README_CN.md)
 
-### AGI Input/Output Modeling Language 
+### AGI Modeling Language 
 
 
 ## Introduction
