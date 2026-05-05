@@ -47,7 +47,6 @@ PML (文本) → AST → IR → Execution Graph → Runtime (NNOS)
 | **IPP / PPL** | 双重视图：`ippl` 面向 LLM/机器优化，`ppl` 面向人类阅读 |
 | **NNOS** | 运行时系统，支持调度、状态管理、重试、验证、资源配额、追踪、补偿、脚本执行等 |
 
----
 
 ## 语法规范 (Syntax Specification)
 
@@ -192,9 +191,49 @@ ppl: string                       # 人类可读表示
 | `openapi` | 调用 OpenAPI 操作 | `openapi.url`, `openapi.operation` |
 | `grpc` | 调用 gRPC 方法 | `grpc.proto`, `grpc.service`, `grpc.method` |
 | `script` | 执行 PMLScript | `script` (引用) 或内联 `code` |
+| `timer` | 用于周期触发 | `timer` , `code` |
 
+#### Timer节点定时执行
+```
+pnodes:
+  - id: periodic_check
+    type: timer
+    control:
+      delay: 3600        # 首次延迟 1 小时
+      repeat: true       # 之后每 1 小时重复
+    process:
+      action: "trigger"  # 触发目标节点或工作流
+```
+##### 语义：
 
-### LLM 节点增强（LLM Modes）
+- 普通节点设置 `delay` 后，节点在依赖条件满足后额外等待 `delay` 秒才被调度。
+- `timer` 节点可视为源节点（无数据依赖），按时间间隔自动触发后续节点。
+- 重复计时器支持取消（通过事件或取消节点）。
+
+#### 节点优先级 (Priority)  
+
+在 `PNode` 的 `control` 字段的 `priority` 属性，用于调度器按优先级排序任务队列。
+
+```
+control:
+  priority: integer      # 越小优先级越高，默认 0
+```
+
+语义：
+- 调度器维护优先级队列，高优先级节点优先执行。  
+- 若多个节点具相同优先级，按拓扑顺序或 FIFO 执行。  
+- 优先级可动态修改（通过 PMLScript 或 planning 节点生成时指定）。
+
+#### 节点延迟 (Delay & Timer)  
+在 `control` 中增加 `delay` 属性，使节点在指定延迟后才进入就绪队列。
+
+```
+control:
+  delay: number          # 延迟时间（秒），支持小数
+  repeat: boolean        # 是否重复执行（仅 timer 节点有效）
+```
+
+#### LLM 节点增强（LLM Modes）
 
 在 `process` 中使用 `llm_mode` 选择交互模式：
 
@@ -273,6 +312,60 @@ pnodes:
 ```
 
 支持模式：请求-响应、发布-订阅、消息队列、共享内存。通信协议与数据边（`edges`）共存。
+
+### 请求-响应双向通信 (Request-Reply)  
+```
+communication:
+  request_reply:
+    - id: "rpc_call"
+      protocol: "rpc_endpoint"          # 引用 protocols 中定义的通道
+      request_channel: "task_queue"     # 请求队列/方法名
+      reply_channel: "result_queue"     # 响应队列
+      timeout_sec: 30                   # 请求超时
+      handler: "handle_reply"           # 处理响应的函数
+```
+communication 字段与request_reply 模式，用于两个节点间的同步请求-响应交互。
+
+#### 服务端节点 (提供能力)：
+
+```
+pnodes:
+  - id: calculator
+    type: function
+    communication:
+      request_reply:
+        - id: "add"
+          protocol: "rpc_endpoint"
+          request_channel: "calc_requests"
+          reply_channel: "calc_results"
+          handler: "compute_add"
+```
+
+#### 客户端节点 (发起请求)：
+```
+pnodes:
+  - id: client
+    type: script
+    communication:
+      request_reply:
+        - id: "call_add"
+          protocol: "rpc_endpoint"
+          request_channel: "calc_requests"
+          reply_channel: "calc_results"
+    script: |
+      async function run(input, ctx) {
+          const result = await ctx.requestReply("add", { a: 1, b: 2 });
+          return { sum: result.sum };
+      }
+```
+
+
+- 客户端节点通过 ctx.requestReply(channel, payload) 发送请求，同步等待响应。
+
+- NNOS 负责管理请求-响应对的关联、超时、重试。
+
+- 服务端节点通过 communication.request_reply 声明处理方法，当消息到达时自动调用。
+
 
 ## 双重视图：ippl 与 ppl  
 
@@ -439,6 +532,12 @@ ppcli import openapi petstore.yaml --output skills.yaml
 - 通信适配器：MQ、gRPC、HTTP 等
 
 - MCP 集成：支持 stdio/SSE/WebSocket
+  
+- 优先级队列：调度器必须实现基于优先级的任务排序，支持动态优先级更新。
+
+- 定时器：提供全局定时器管理器，支持一次性延迟和周期性任务，与 DAG 调度集成。
+  
+- RPC 请求-响应：为每个通信通道维护待处理请求表，支持超时清理和错误回调。
 
 ## 完整示例
 
