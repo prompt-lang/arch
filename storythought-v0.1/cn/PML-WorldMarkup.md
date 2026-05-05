@@ -1,7 +1,7 @@
 # PML World Markup Extension
 
-Scene-Markup
-
+## Scene-Markup
+ 
 设计原则（新增）
 - 职责单一：标记的 CRUD、查询、渲染、变换、流处理使用独立节点类型。
 - 实时优先：支持标记流订阅与窗口聚合，适配传感器数据。
