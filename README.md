@@ -16,7 +16,11 @@ Prompt Lang is used to handle the input and output of an Agent. The input of the
 Arch storythought-v0.1 will be available on github [storythought](github.com/prompt-lang/storythought)
 
 
+<<<<<<< HEAD
 
 ###### Copyright (c) [MachineSociety.com](https://machinesociety.com), All rights reserved.
+=======
+###### Copyright (c) [Machine-Society.ai](https://x.com/machine_society), All rights reserved.
+>>>>>>> 1b21621 (update icon)
 
 ## License under the MIT license
