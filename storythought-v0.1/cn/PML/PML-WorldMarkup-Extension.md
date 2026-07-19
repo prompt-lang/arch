@@ -550,3 +550,287 @@ pnodes:
       }
 ```
 
+
+## Markdown 提示扩展（Markdown Prompt Card Domain）
+
+### 设计动机
+
+PML 的声明式结构提供了确定性、可验证的执行模型——但 LLM-Loop 系统中，Agent 与模型的快速闭环交互往往更依赖**自然语言的灵活性与即时性**。Claude Code 的 Markdown 体系（CLAUDE.md、skills/*.md、rules/*.md）的成功证明了 Markdown 作为 Agent 交互媒介的价值。
+
+**Markdown 提示扩展**在 PML 的 Markup 系统中新增 `type: markdown` 标记域，使 PML 在保持结构化优势的同时，获得 Markdown 提示卡片的灵活性。它被定位为 Markup 的一个域类型——与 spatial/temporal 域同等地位，但专门面向自然语言内容的存储、查询、版本管理和 LLM 上下文注入。
+
+### 与 Anthropic Claude Code 的定位对比
+
+```
+Claude Code:
+  CLAUDE.md ──→ 静态文本文件，手动编辑
+  skills/*.md ──→ 静态文本文件，按需加载
+  rules/*.md ──→ 静态文本文件，路径匹配加载
+  共同缺陷: 无版本控制、无结构化查询、无程序化 CRUD、无自动演化
+
+PML Markdown Markup Domain:
+  markup_domains(type: markdown) ──→ 结构化标记域
+  markup_crud ──→ 程序化 CRUD（Agent 可自主创建/更新提示卡）
+  markup_query ──→ 结构化查询 + 全文搜索
+  markup_render ──→ 自动格式化注入 LLM 上下文
+  核心优势: 版本控制、程序化管理、自动演化、与 PEM 记忆联动
+```
+
+### 语法扩展
+
+#### 标记域定义
+
+```yaml
+markup_domains:
+  - id: "prompt_cards"
+    type: "markdown"                    # 新增域类型
+    description: "Agent prompt cards for LLM-Loop interaction"
+    versioning: true                    # 每次修改自动递增版本号
+    conflict_policy: "last_write_wins"
+    storage:
+      backend: "memory"                 # memory, git, pem_backend
+      ttl_sec: 86400                    # 卡片可设置自动过期
+    metadata_schema:                    # 每张卡片的结构化元数据
+      author: string
+      tags: [string]
+      scope: "global" | "workflow" | "node" | "turn"
+      priority: 1..10
+      status: "draft" | "active" | "deprecated"
+    indexing:
+      fulltext: true                    # 启用全文搜索索引
+      embedding:                        # 启用语义向量索引
+        enabled: true
+        model: "text-embedding-3-small"
+```
+
+#### 基本 CRUD 操作
+
+```yaml
+pnodes:
+  # 创建 Markdown 提示卡
+  - id: create_card
+    type: markup_crud
+    domain: "prompt_cards"
+    operation: "create"
+    markup:
+      type: "prompt_card"
+      metadata:
+        author: "refactor-agent"
+        tags: ["coding", "convention", "golang"]
+        scope: "workflow"
+        priority: 8
+        status: "active"
+      content: |
+        # Go 代码规范
+
+        ## 命名约定
+        - 使用驼峰命名，导出符号首字母大写
+        - 接口名以 `er` 结尾（如 `Reader`, `Writer`）
+
+        ## 错误处理
+        - 永远不要忽略 error 返回值
+        - 使用 `fmt.Errorf` 包装错误上下文
+
+        ## 测试
+        - 测试文件放在同一包内，以 `_test.go` 结尾
+        - 使用 table-driven tests
+    output:
+      schema:
+        card_id: { type: string }
+        version: { type: number }
+
+  # 查询 Markdown 提示卡
+  - id: find_coding_conventions
+    type: markup_query
+    domain: "prompt_cards"
+    query: "$..[?(@.metadata.tags contains 'coding')]"   # 结构化查询
+    fulltext: "错误处理 测试约定"                          # 全文搜索
+    semantic: "Go language best practices"                # 语义搜索
+    limit: 5
+    output:
+      schema:
+        cards: { type: array }
+
+  # 更新 Markdown 提示卡
+  - id: update_card
+    type: markup_crud
+    domain: "prompt_cards"
+    operation: "update"
+    markup:
+      id: "card_golang_001"
+      version: 3                          # 乐观锁版本控制
+      content: |
+        # Go 代码规范 (v2)
+        ## 新增：并发模式
+        - 使用 context 传递取消信号
+        - goroutine 生命周期必须明确
+```
+
+#### 自动注入 LLM 上下文
+
+Markdown 提示卡的核心价值在于**自动注入 LLM 上下文**。`type: llm` 节点通过 `context.markup_sources` 声明需要注入的标记域：
+
+```yaml
+pnodes:
+  - id: code_review_agent
+    type: llm
+    context:
+      # ── 显式上下文（原有）──
+      explicit:
+        system: "你是代码审查专家"
+        user: "{{workflow.input.task}}"
+
+      # ── 标记域上下文（新增）──
+      markup_sources:
+        - domain: "prompt_cards"
+          query: "$..[?(@.metadata.scope == 'workflow')]"   # 范围过滤
+          priority_min: 5                                    # 仅高优先级
+          status: "active"                                   # 仅活跃卡片
+          format: "system_message"                           # 注入方式
+          max_tokens: 2000                                   # 上下文预算
+          order_by: "priority desc"                          # 优先级排序
+
+        - domain: "prompt_cards"
+          query: "$..[?(@.metadata.tags contains 'security')]"
+          format: "system_message"
+          prefix: "## 安全规范\n以下安全规则必须遵守：\n"
+
+    process:
+      prompt:
+        user: "{{workflow.input.task}}"
+```
+
+运行时 NNOS 自动：
+1. 查询匹配的 Markdown 提示卡
+2. 按优先级排序并截断至 `max_tokens`
+3. 格式化为 system message 注入 LLM 上下文
+4. 记录注入了哪些卡片（可观测性）
+
+#### 渲染输出
+
+```yaml
+  - id: render_conventions
+    type: markup_render
+    domain: "prompt_cards"
+    query: "$..[?(@.metadata.tags contains 'coding')]"
+    render:
+      mode: "markdown_merged"            # 合并多张卡片为单个 Markdown 文档
+      format: "markdown"
+      template: |
+        # 项目约定与规范
+        生成时间: {{now}}
+        ---
+        {{cards}}
+      group_by: "$.metadata.tags"        # 按标签分组
+      sort_by: "$.metadata.priority desc"
+    output:
+      schema:
+        merged_markdown: { type: string }
+```
+
+### LLM-Loop 快速闭环交互模式
+
+Markdown 提示扩展的典型场景是 **LLM-Loop 快速闭环**——Agent 在多轮迭代中自主管理提示卡：
+
+```yaml
+workflow:
+  name: "self_improving_agent"
+  session_mode: inloop
+
+  nodes:
+    # Step 1: 从提示卡域获取当前上下文
+    - id: load_context
+      type: markup_query
+      domain: "prompt_cards"
+      query: "$..[?(@.metadata.status == 'active')]"
+      order_by: "metadata.priority desc"
+      output:
+        context_cards: "{{result}}"
+
+    # Step 2: 执行任务（自动注入匹配的提示卡）
+    - id: execute
+      type: llm
+      context:
+        markup_sources:
+          - domain: "prompt_cards"
+            query: "$..[?(@.metadata.status == 'active')]"
+            format: "system_message"
+            max_tokens: 2000
+      process:
+        prompt:
+          user: "{{workflow.input.task}}"
+
+    # Step 3: Agent 自主决定是否创建/更新提示卡
+    - id: reflect_and_update
+      type: llm
+      process:
+        prompt:
+          system: |
+            你刚刚完成了任务。请评估以下内容并决定是否需要更新提示卡：
+
+            1. 你是否发现了一个新的模式或约定需要记录？
+            2. 你是否遇到了一个需要避免的错误？
+            3. 现有提示卡中是否有过时或不准确的内容？
+
+            如果需要创建或更新提示卡，输出格式为：
+            {
+              "action": "create" | "update" | "none",
+              "card": { "metadata": {...}, "content": "..." }
+            }
+
+    # Step 4: 执行提示卡变更
+    - id: apply_card_changes
+      type: script
+      script: |
+        async function run(input, ctx) {
+            let decision = input.reflection;
+            if (decision.action === "create") {
+                await ctx.markup.create("prompt_cards", decision.card);
+            } else if (decision.action === "update") {
+                await ctx.markup.update("prompt_cards", decision.card.id, decision.card);
+            }
+            return { applied: decision.action };
+        }
+```
+
+### 与 PEM 的联动
+
+Markdown 提示卡可以作为 PEM 的"非结构化前端"：
+
+```yaml
+# Markdown 提示卡 ↔ PEM 双向同步
+
+memory_backends:
+  - id: "engineering_kb"
+    mode: "deterministic"
+    format: "mem_pml"
+
+markup_domains:
+  - id: "prompt_cards"
+    type: "markdown"
+    storage:
+      backend: "pem_backend"             # 持久化到 PEM
+      pem_domain: "engineering_kb"
+    sync:
+      direction: "bidirectional"         # PEM 结构化记录 ↔ Markdown 卡片
+      mapping:
+        # PEM 决策记录 → Markdown 提示卡
+        pem_to_card:
+          source_view: "view_decisions"
+          transform: "summarize_as_convention"
+        # Markdown 卡片 → PEM 知识条目
+        card_to_pem:
+          target_category: "context"
+          auto_tag: true
+```
+
+### 设计原则
+
+1. **Markdown 是 Markup 的一个域类型** — 不是新建体系，而是复用 `markup_crud`、`markup_query`、`markup_render`、`markup_stream` 全部现有节点类型。
+2. **结构化管理非结构化内容** — 每张 Markdown 卡片都有结构化元数据（author, tags, scope, priority, status），内容是 Markdown。
+3. **LLM 上下文自动注入** — `markup_sources` 声明式配置，NNOS 自动查询 → 排序 → 截断 → 注入。
+4. **Agent 自主管理提示卡** — Agent 可以在 Loop 中创建、更新、弃用提示卡，实现自我进化。
+5. **版本控制与审计** — 每次修改记录版本号，支持回滚和审计追踪。
+6. **与 PEM 双向联动** — 结构化工程记忆 ↔ 非结构化提示卡互转。
+
+
